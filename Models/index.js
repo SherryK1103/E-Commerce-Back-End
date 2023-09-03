@@ -1,14 +1,20 @@
-const Reader = require('./Reader');
-const Book = require('./Book');
-const LibraryCard = require('./LibraryCard');
+// import models
+const Product = require('./Product');
+const Category = require('./Category');
+const Tag = require('./Tag');
+const ProductTag = require('./ProductTag');
 
-Reader.hasOne(LibraryCard, {
-  foreignKey: 'reader_id',
-  onDelete: 'CASCADE',
-});
+// Products belongsTo Category
 
-LibraryCard.belongsTo(Reader, {
-  foreignKey: 'reader_id',
-});
+// Categories have many Products
 
-module.exports = { Reader, Book, LibraryCard };
+// Products belongToMany Tags (through ProductTag)
+
+// Tags belongToMany Products (through ProductTag)
+
+module.exports = {
+  Product,
+  Category,
+  Tag,
+  ProductTag,
+};
