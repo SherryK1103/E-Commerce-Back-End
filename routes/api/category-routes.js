@@ -1,8 +1,6 @@
 const router = require('express').Router();
 const { Category, Product } = require('../../models');
 
-// The `/api/categories` endpoint
-
 router.get('/', async (req, res) => {
   try {
     const categories = await Category.findAll({
@@ -43,12 +41,40 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.put('/:id', (req, res) => {
-  // update a category by its `id` value
+router.put('/:id', async (req, res) => {
+  try {
+    const categoryId = req.params.id;
+    const updatedCategory = await Category.update(req.body, {
+      where: { id: categoryId },
+    });
+
+    if (!updatedCategory[0]) {
+      return res.status(404).json({ message: 'Category not found' });
+    }
+
+    res.json({ message: 'Category updated successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
 });
 
-router.delete('/:id', (req, res) => {
-  // delete a category by its `id` value
+router.delete('/:id', async (req, res) => {
+  try {
+    const categoryId = req.params.id;
+    const deletedCategory = await Category.destroy({
+      where: { id: categoryId },
+    });
+
+    if (!deletedCategory) {
+      return res.status(404).json({ message: 'Category not found' });
+    }
+
+    res.json({ message: 'Category deleted successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
 });
 
 module.exports = router;
