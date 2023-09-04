@@ -9,14 +9,14 @@ router.get('/', async (req, res) => {
     res.json(categories);
   } catch (error) {
     console.error(error);
-    res.status(500).jason({ message: 'Internal server error' });
+    res.status(500).json({ message: 'Internal server error' });
   }
 });
 
 router.get('/:id', async (req, res) => {
   try {
     const categoryId = req.params.id;
-    const category = await Category.frindByPk(categoryId, {
+    const category = await Category.findByPk(categoryId, {
       include: [{ model: Product }],
     });
 
