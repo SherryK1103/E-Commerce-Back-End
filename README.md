@@ -10,13 +10,10 @@ A back end for an e-commerce website that uses the latest technologies so that a
 
 ## Table of Contents
 
-- [Technology](#technology)
 - [Installation](#installation)
 - [Testing](#testing)
 - [Links](#links)
 - [License](#license)
-
-## Technologies Used <a name="technology"></a>
 
 ## Installation <a name="installation"></a>
 
