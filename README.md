@@ -2,7 +2,7 @@
 
 ## Screenshot
 
-![ECommerce SS](.assets/ecom-ss.png)
+![ECommerce SS](assets/ecom-ss.png)
 
 ## Description
 
